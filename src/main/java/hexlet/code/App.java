@@ -12,6 +12,15 @@ import java.util.concurrent.Callable;
         description = "Compares two configuration files and shows a difference.")
 class HelloWorld implements Callable<String> {
 
+  @Option(names = { "-f", "--format" }, description = "output format", defaultValue = "stylish", showDefaultValue = CommandLine.Help.Visibility.ALWAYS)
+  String format = "format";
+
+  @Parameters(index = "0", paramLabel = "filepath1", description = "path to first file")
+  String firstFile;
+
+  @Parameters(index = "1", paramLabel = "filepath2", description = "path to second file")
+  String secondFile;
+
   @Override
   public String call() throws Exception { // your business logic goes here...
     System.out.println("Hello world!");
