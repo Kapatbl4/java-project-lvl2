@@ -27,9 +27,6 @@ public class Differ {
         keysSet.addAll(resultOfFirstFile.keySet());
         keysSet.addAll(resultOfSecondFile.keySet());
         List<String> keys = keysSet.stream().sorted().collect(Collectors.toList());
-        for (String s : keys) {
-            System.out.println(s);
-        }
 
         for (String s : keys) {
             if (resultOfFirstFile.containsKey(s) && resultOfSecondFile.containsKey(s)) {
@@ -57,9 +54,9 @@ public class Differ {
     }
 
     public static void setPathToFile1(String path) {
-        pathToFile1 = Path.of(path);
+        pathToFile1 = Path.of(path).toAbsolutePath();
     }
     public static void setPathToFile2(String path) {
-        pathToFile2 = Path.of(path);
+        pathToFile2 = Path.of(path).toAbsolutePath();
     }
 }
