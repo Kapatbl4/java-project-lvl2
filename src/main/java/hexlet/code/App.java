@@ -23,9 +23,10 @@ class HelloWorld implements Callable<String> {
 
   @Override
   public String call() throws Exception { // your business logic goes here...
+    Differ.setPathToFile1(firstFile);
+    Differ.setPathToFile2(secondFile);
     System.out.println(Differ.generate());
-    System.out.println("Hello world!");
-    return "Hello world!";
+    return "";
   }
 
   // this example implements Callable, so parsing, error handling and handling user
@@ -33,8 +34,6 @@ class HelloWorld implements Callable<String> {
 }
 public class App {
   public static void main(String[] args) {
-    Differ.setPathToFile1(args[0]);
-    Differ.setPathToFile2(args[1]);
     int exitCode = new CommandLine(new HelloWorld()).execute(args);
     System.exit(exitCode);
   }
