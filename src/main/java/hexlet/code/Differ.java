@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 public class Differ {
     private static Path pathToFile1;
     private static Path pathToFile2;
+
     public static String generate() throws IOException {
         File file1 = pathToFile1.toFile();
         File file2 = pathToFile2.toFile();
@@ -47,16 +48,17 @@ public class Differ {
         for (Map.Entry<String, Object> pair : result.entrySet()) {
             String key = pair.getKey();
             String value = pair.getValue().toString();
-            sb.append(" " + key).append(": ").append(value + "\n");
+            sb.append(" ").append(key).append(": ").append(value).append("\n");
         }
         sb.append("}");
         return String.valueOf(sb);
     }
 
     public static void setPathToFile1(String path) {
-        pathToFile1 = Path.of(path).toAbsolutePath();
+        pathToFile1 = Path.of(path);
     }
     public static void setPathToFile2(String path) {
-        pathToFile2 = Path.of(path).toAbsolutePath();
+        pathToFile2 = Path.of(path);
     }
+
 }
