@@ -6,3 +6,8 @@ run-dist: #run
 
 check-updates: #update check
 	./gradlew dependencyUpdates
+
+build: # build
+	./gradlew clean build
+.PHONY : build
+.PHONY : test
