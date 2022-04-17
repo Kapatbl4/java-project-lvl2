@@ -20,5 +20,5 @@ public class AppTest {
         assertEquals(expected, Differ.generate("/home/kapatbl4/java-project-lvl2/src/test/file1.json",
                 "/home/kapatbl4/java-project-lvl2/src/test/file2.json"));
     }
-    
+
 }

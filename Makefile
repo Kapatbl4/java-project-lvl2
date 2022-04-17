@@ -7,7 +7,12 @@ run-dist: #run
 check-updates: #update check
 	./gradlew dependencyUpdates
 
+report: #test report
+	./gradlew jacocoTestReport
+
 build: # build
+	./gradlew checkstyleMain
+	./gradlew test
 	./gradlew clean build
 .PHONY : build
 .PHONY : test

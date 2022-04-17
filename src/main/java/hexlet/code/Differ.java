@@ -17,11 +17,6 @@ import java.util.stream.Collectors;
 public class Differ {
 
     public static String generate(String pathToFile1, String pathToFile2) throws IOException {
-        boolean format;
-        format = Path.of(pathToFile1).isAbsolute();
-        pathToFile1 = format ? pathToFile1 : Path.of(pathToFile1).toAbsolutePath().toString();
-        format = Path.of(pathToFile2).isAbsolute();
-        pathToFile2 = format ? pathToFile2 : Path.of(pathToFile2).toAbsolutePath().toString();
         File file1 = new File(pathToFile1);
         File file2 = new File(pathToFile2);
 
