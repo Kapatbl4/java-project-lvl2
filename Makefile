@@ -10,6 +10,9 @@ check-updates: #update check
 report: #test report
 	./gradlew jacocoTestReport
 
+test:
+	./gradlew test
+
 build: # build
 	./gradlew checkstyleMain
 	./gradlew test
