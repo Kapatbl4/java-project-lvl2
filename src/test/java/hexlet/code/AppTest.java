@@ -12,7 +12,7 @@ public class AppTest {
     private static String expected;
     @BeforeAll
     static void setFile() throws IOException {
-        expected = Files.readString(Path.of("/home/kapatbl4/java-project-lvl2/src/test/expected.json"));
+        expected = Files.readString(Path.of("src/test/expected.json").toAbsolutePath());
     }
 
     @Test
