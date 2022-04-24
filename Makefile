@@ -13,6 +13,9 @@ report: #test report
 test:
 	./gradlew test
 
+lint:
+	./gradlew checkstyleMain checkstyleTest
+
 build: # build
 	./gradlew checkstyleMain
 	./gradlew test
