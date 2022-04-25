@@ -1,10 +1,6 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
-
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -16,14 +12,8 @@ import java.util.stream.Collectors;
 public class Differ {
 
     public static String generate(String pathToFile1, String pathToFile2) throws IOException {
-        File file1 = new File(pathToFile1);
-        File file2 = new File(pathToFile2);
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        JsonParser parser1 = objectMapper.createParser(file1);
-        JsonParser parser2 = objectMapper.createParser(file2);
-        HashMap<String, Object> resultOfFirstFile = objectMapper.readValue(parser1, HashMap.class);
-        HashMap<String, Object> resultOfSecondFile = objectMapper.readValue(parser2, HashMap.class);
+        HashMap<String, Object> resultOfFirstFile = Parser.parseFile(pathToFile1);
+        HashMap<String, Object> resultOfSecondFile = Parser.parseFile(pathToFile2);
 
         LinkedHashMap<String, Object> result = new LinkedHashMap();
 
@@ -46,6 +36,11 @@ public class Differ {
                 result.put(" + " + s, resultOfSecondFile.get(s));
             }
         }
+
+        return mapToString(result);
+    }
+
+    private static String mapToString(LinkedHashMap<String, Object> result) {
         StringBuilder sb = new StringBuilder();
         sb.append("{\n");
         for (Map.Entry<String, Object> pair : result.entrySet()) {
