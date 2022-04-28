@@ -1,6 +1,5 @@
 package hexlet.code;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,9 +13,14 @@ public class Differ {
         Map<String, Object> resultOfFirstFile = Parser.parseFile(pathToFile1);
         Map<String, Object> resultOfSecondFile = Parser.parseFile(pathToFile2);
 
-        List<Map<String, Object>> interimDiff = genInterimDiff(resultOfFirstFile, resultOfSecondFile);
+        return Formatter.chooseFormatter(genInterimDiff(resultOfFirstFile, resultOfSecondFile), "");
+    }
 
-        return Formatter.stylish(interimDiff);
+    public static String generate(String pathToFile1, String pathToFile2, String format) throws IOException {
+        Map<String, Object> resultOfFirstFile = Parser.parseFile(pathToFile1);
+        Map<String, Object> resultOfSecondFile = Parser.parseFile(pathToFile2);
+
+        return Formatter.chooseFormatter(genInterimDiff(resultOfFirstFile, resultOfSecondFile), format);
     }
 
     public static List<Map<String, Object>> genInterimDiff(Map<String, Object> map1, Map<String, Object> map2) {
@@ -56,21 +60,6 @@ public class Differ {
                     element.put("status", "changed");
                 }
             }
-//            } else if (element.get("oldValue") == null && element.get("newValue").equals("No new value")) {
-//                element.put("status", "deleted");
-//            } else if (element.get("oldValue") == null && !element.get("newValue").equals("No new value")) {
-//                element.put("status", "changed");
-//            } else if (element.get("oldValue").equals("No old value")
-//                        && !element.get("newValue").equals("No new value")) {
-//                element.put("status", "added");
-//            } else if (!element.get("oldValue").equals("No old value")
-//                        && element.get("newValue").equals("No new value")) {
-//                element.put("status", "deleted");
-//            } else if (element.get("oldValue").equals(element.get("newValue"))) {
-//                element.put("status", "unchanged");
-//            } else {
-//                element.put("status", "changed");
-//            }
             interimDiff.add(element);
         }
         return interimDiff;

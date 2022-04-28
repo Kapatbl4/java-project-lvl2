@@ -14,7 +14,7 @@ import java.io.IOException;
 public final class App implements Runnable {
     @Option(names = { "-f", "--format" }, description = "output format", defaultValue = "stylish",
             showDefaultValue = CommandLine.Help.Visibility.ALWAYS)
-    private String format = "format";
+    private static String format;
 
     @Parameters(index = "0", paramLabel = "filepath1", description = "path to first file")
     private static String firstFile;
@@ -27,7 +27,7 @@ public final class App implements Runnable {
     }
     public static void main(String[] args) throws IOException {
         int exitCode = new CommandLine(new App()).execute(args);
-        System.out.println(Differ.generate(firstFile, secondFile));
+        System.out.println(Differ.generate(firstFile, secondFile, format));
         System.exit(exitCode);
     }
 }
