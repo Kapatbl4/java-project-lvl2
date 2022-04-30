@@ -1,28 +1,25 @@
 package hexlet.code.formatters;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Plain {
-    public static String plain(List<Map<String, Object>> interimDiff) {
+    public static String plain(List<LinkedHashMap<String, Object>> interimDiff) {
         StringBuilder sb = new StringBuilder();
         for (Map<String, Object> map : interimDiff) {
             if (map.get("status").equals("added")) {
                 sb.append("Property '").
-                        append(map.get("key")).
+                        append(map.get("fieldName")).
                         append("' was added with value: ").
                         append(elementToString(map.get("newValue"))).
                         append("\n");
             } else if (map.get("status").equals("deleted")) {
                 sb.append("Property '").
-                        append(map.get("key")).
+                        append(map.get("fieldName")).
                         append("' was removed").
                         append("\n");
             } else if (map.get("status").equals("changed")) {
                 sb.append("Property '").
-                        append(map.get("key")).
+                        append(map.get("fieldName")).
                         append("' was updated. From ").
                         append(elementToString(map.get("oldValue"))).
                         append(" to ").
