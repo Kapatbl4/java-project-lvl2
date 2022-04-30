@@ -3,5 +3,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/19185908df558ecf53e0/maintainability)](https://codeclimate.com/github/Kapatbl4/java-project-lvl2/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/19185908df558ecf53e0/test_coverage)](https://codeclimate.com/github/Kapatbl4/java-project-lvl2/test_coverage)
 
-![first screen](https://user-images.githubusercontent.com/90971956/162726336-053d4ec8-c62f-4ceb-ab57-2b2d29ec29d3.png)
 
+
+![1-2](https://user-images.githubusercontent.com/90971956/166113044-b2dafafc-d456-410d-bc8b-ac9246f7ed1e.png)
+![3-4](https://user-images.githubusercontent.com/90971956/166113050-b7967b80-62c8-4d36-ac90-95bd1e79e471.png)
