@@ -1,6 +1,10 @@
 package hexlet.code.formatters;
 
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Arrays;
 
 public class Plain {
     public static String plain(List<LinkedHashMap<String, Object>> interimDiff) {

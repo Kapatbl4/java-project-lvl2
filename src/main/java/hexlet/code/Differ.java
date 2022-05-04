@@ -25,7 +25,8 @@ public class Differ {
         return Formatter.chooseFormatter(genInterimDiff(resultOfFirstFile, resultOfSecondFile), format);
     }
 
-    public static List<LinkedHashMap<String, Object>> genInterimDiff(Map<String, Object> map1, Map<String, Object> map2) {
+    public static List<LinkedHashMap<String, Object>> genInterimDiff(Map<String, Object> map1,
+                                                                     Map<String, Object> map2) {
         List<LinkedHashMap<String, Object>> interimDiff = new ArrayList<>();
         TreeSet<String> keysSet = new TreeSet<>(map1.keySet());
         keysSet.addAll(map2.keySet());
