@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AppTest {
@@ -69,6 +70,7 @@ public class AppTest {
                 + "Property 'setting2' was updated. From 200 to 300\n"
                 + "Property 'setting3' was updated. From true to 'none'";
     }
+
 
     @Test
     public void testJSON() throws Exception {
