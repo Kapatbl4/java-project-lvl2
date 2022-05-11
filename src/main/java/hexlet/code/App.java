@@ -23,11 +23,15 @@ public final class App implements Runnable {
     private static String secondFile;
 
     @Override
-    public void run() { // your business logic goes here...
+    public void run() {
+        try {
+            System.out.println(Differ.generate(firstFile, secondFile, format));   // your business logic goes here...
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         int exitCode = new CommandLine(new App()).execute(args);
-        System.out.println(Differ.generate(firstFile, secondFile, format));
         System.exit(exitCode);
     }
 }

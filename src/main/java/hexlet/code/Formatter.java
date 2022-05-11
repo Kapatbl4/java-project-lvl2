@@ -11,11 +11,20 @@ import java.util.List;
 public class Formatter {
     public static String chooseFormatter(List<LinkedHashMap<String, Object>> interimDiff,
                                          String format) throws JsonProcessingException {
-        if (format.equals("plain")) {
-            return Plain.plain(interimDiff);
-        } else if (format.equals("json")) {
-            return Json.json(interimDiff);
+        String result;
+        switch (format) {
+            case ("plain") :
+                result = Plain.plain(interimDiff);
+                break;
+            case ("json") :
+                result = Json.json(interimDiff);
+                break;
+            case ("stylish") :
+                result = Stylish.stylish(interimDiff);
+                break;
+            default: throw new RuntimeException("Unsupported format");
         }
-        return Stylish.stylish(interimDiff);
+
+        return result;
     }
 }
