@@ -5,26 +5,17 @@ import hexlet.code.formatters.Json;
 import hexlet.code.formatters.Plain;
 import hexlet.code.formatters.Stylish;
 
-import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.List;
 
 public class Formatter {
-    public static String chooseFormatter(List<LinkedHashMap<String, Object>> interimDiff,
+    public static String format(List<Map<String, Object>> interimDiff,
                                          String format) throws JsonProcessingException {
-        String result;
-        switch (format) {
-            case ("plain") :
-                result = Plain.plain(interimDiff);
-                break;
-            case ("json") :
-                result = Json.json(interimDiff);
-                break;
-            case ("stylish") :
-                result = Stylish.stylish(interimDiff);
-                break;
-            default: throw new RuntimeException("Unsupported format");
-        }
-
-        return result;
+        return switch (format) {
+            case ("plain") -> Plain.plain(interimDiff);
+            case ("json") -> Json.json(interimDiff);
+            case ("stylish") -> Stylish.stylish(interimDiff);
+            default -> throw new RuntimeException("Unsupported format");
+        };
     }
 }

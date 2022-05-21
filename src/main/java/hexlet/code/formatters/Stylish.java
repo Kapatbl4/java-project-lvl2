@@ -1,11 +1,10 @@
 package hexlet.code.formatters;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Stylish {
-    public static String stylish(List<LinkedHashMap<String, Object>> interimDiff) {
+    public static String stylish(List<Map<String, Object>> interimDiff) {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         for (Map<String, Object> map : interimDiff) {

@@ -1,13 +1,12 @@
 package hexlet.code.formatters;
 
 import java.util.Map;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Collection;
 import java.util.Objects;
 
 public class Plain {
-    public static String plain(List<LinkedHashMap<String, Object>> interimDiff) {
+    public static String plain(List<Map<String, Object>> interimDiff) {
         StringBuilder sb = new StringBuilder();
         for (Map<String, Object> map : interimDiff) {
             if (map.get("status").equals("added")) {

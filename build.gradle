@@ -14,7 +14,7 @@ application {
     mainClass = 'hexlet.code.App'
 }
 compileJava {
-    options.release = 11
+    options.release = 17
 }
 dependencies {
     implementation 'info.picocli:picocli:4.6.3'

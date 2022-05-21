@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
@@ -21,20 +21,20 @@ public class Differ {
     public static String generate(String pathToFile1, String pathToFile2, String format) throws IOException {
         String data1 = readData(pathToFile1);
         String data2 = readData(pathToFile2);
-        Map<String, Object> resultOfFirstFile = Parser.parseFile(data1, getFileFormat(pathToFile1));
-        Map<String, Object> resultOfSecondFile = Parser.parseFile(data2, getFileFormat(pathToFile2));
+        Map<String, Object> resultOfFirstFile = Parser.parse(data1, getFileFormat(pathToFile1));
+        Map<String, Object> resultOfSecondFile = Parser.parse(data2, getFileFormat(pathToFile2));
 
-        return Formatter.chooseFormatter(genInterimDiff(resultOfFirstFile, resultOfSecondFile), format);
+        return Formatter.format(genInterimDiff(resultOfFirstFile, resultOfSecondFile), format);
     }
 
-    public static List<LinkedHashMap<String, Object>> genInterimDiff(Map<String, Object> map1,
+    public static List<Map<String, Object>> genInterimDiff(Map<String, Object> map1,
                                                                      Map<String, Object> map2) {
-        List<LinkedHashMap<String, Object>> interimDiff = new ArrayList<>();
+        List<Map<String, Object>> interimDiff = new ArrayList<>();
         TreeSet<String> keysSet = new TreeSet<>(map1.keySet());
         keysSet.addAll(map2.keySet());
 
         for (String s : keysSet) {
-            LinkedHashMap<String, Object> element = new LinkedHashMap<>();
+            HashMap<String, Object> element = new HashMap<>();
             element.put("fieldName", s);
             element.put("oldValue", map1.getOrDefault(s, null));
             element.put("newValue", map2.getOrDefault(s, null));
@@ -65,10 +65,10 @@ public class Differ {
 
     public static String getFileFormat(String filename) {
         String result;
-        if (filename.endsWith(".json")) {
-            result = ".json";
-        } else if (filename.endsWith(".yml") || filename.endsWith(".yaml")) {
-            result = ".yml";
+        if (filename.endsWith("json")) {
+            result = "json";
+        } else if (filename.endsWith("yml") || filename.endsWith("yaml")) {
+            result = "yml";
         } else {
             result = "unsupported file format";
         }
